@@ -1,0 +1,16 @@
+EMPID,EMPNAME,designation,type,Salary
+1,Ashwin,System Administrator,NULL,100000
+2,Vinay,Tester,T,90000
+3,Xingyang,Advertisement Manager,A,80000
+4,Shaine,Finance Manager,NULL,70000
+5,Tanmay,HR Manager,NULL,60000
+6,Prateek,Database Developer,NULL,80000
+7,Mayuresh,Tester,T,90000
+8,Jack,Finance Manager,NULL,70000
+9,John,Database Developer,NULL,80000
+10,Rose,HR Manager,NULL,60000
+11,Lucy,Finance Manager,NULL,70000
+12,Lily,Database Developer,NULL,80000
+13,Arnold,Advertisement Manager,A,80000
+14,Tony,Database Developer,NULL,80000
+15,Stuart,Tester,T,90000

@@ -1,0 +1,25 @@
+Advertisement_ID,AdvName,PricePerHour,DurationInHoursPerWeek,Date,MultimediaLink,AdvStatus,ACompany_ID,AdvertisementManager_Manager_Emp_ID
+1,Candycrush,50,120,2009-01-26,galaxy/advertisements/1/Candycrush,rejected,1,3
+2,Facebook Jobs,80,150,2009-03-24,galaxy/advertisements/12/Facebook Jobs,approved,12,13
+3,iWatch,80,150,2009-04-21,galaxy/advertisements/13/iWatch,approved,13,13
+4,Honda cars,80,150,2009-04-29,galaxy/advertisements/15/Honda cars,approved,15,3
+5,Hangout,50,120,2010-02-15,galaxy/advertisements/3/Hangout,approved,3,3
+6,walmart.com,80,150,2010-03-14,galaxy/advertisements/11/walmart.com,approved,11,13
+7,Facebook Apps promotion,80,150,2010-03-21,galaxy/advertisements/12/Facebook Apps promotion,approved,12,3
+8,HTC tablets,80,150,2010-04-27,galaxy/advertisements/14/HTC tablets,rejected,14,13
+9,Honda engines,80,150,2010-05-02,galaxy/advertisements/15/Honda engines,approved,15,3
+10,Google Maps,50,120,2011-03-02,galaxy/advertisements/3/Google Maps,approved,3,13
+11,Zero to one,50,120,2011-03-06,galaxy/advertisements/10/Zero to one,approved,10,13
+12,Christmas Offers,80,150,2011-03-16,galaxy/advertisements/11/Christmas Offers,approved,11,3
+13,Honda bikes,80,150,2011-04-28,galaxy/advertisements/15/Honda bikes,approved,15,13
+14,Google Voice,50,120,2012-02-19,galaxy/advertisements/3/Google Voice,approved,3,3
+15,ipad Air,80,150,2012-04-20,galaxy/advertisements/13/ipad Air,approved,13,3
+16,gameloft.com,50,120,2013-02-04,galaxy/advertisements/1/gameloft.com,on hold,1,13
+17,Facebook.com,80,150,2013-03-22,galaxy/advertisements/12/Facebook.com,rejected,12,3
+18,HTC offers,80,150,2013-04-27,galaxy/advertisements/14/HTC offers,on hold,14,3
+19,Asphalt,50,120,2014-01-25,galaxy/advertisements/1/Asphalt,approved,1,3
+20,Fifty Shades of grey,50,120,2014-03-08,galaxy/advertisements/10/Fifty Shades of grey,rejected,10,13
+21,Beats,80,150,2014-03-26,galaxy/advertisements/13/Beats,approved,13,13
+22,HTC Phones,80,150,2014-04-22,galaxy/advertisements/14/HTC Phones,approved,14,3
+23,Amazon.com,50,120,2014-03-08,galaxy/advertisements/10/Amazon.com,on hold,10,13
+24,Thanksgiving offers,80,150,2014-03-20,galaxy/advertisements/11/Thanksgiving offers,approved,11,13

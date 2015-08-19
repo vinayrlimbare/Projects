@@ -1,0 +1,121 @@
+VersionID,Versionno.,MobileOS,Size,link,whatsnew,date,productID
+1,1.1.0,Android,5.84,galaxy/filesystem/product/1/1.1.0,original app,1/26/2009,1
+2,1.1.31,Android,63.23,galaxy/filesystem/product/16/1.1.31,bug fixes,1/26/2009,16
+3,1.1.1,Android,6.2,galaxy/filesystem/product/1/1.1.1,bug fixes,3/24/2009,1
+4,4.1,All Platforms,71.63,galaxy/filesystem/product/25/4.1,original version,3/24/2009,25
+5,2.1.0,IOS,3.4,galaxy/filesystem/product/1/2.1.0,original app,4/21/2009,1
+6,4.1,All Platforms,73.56,galaxy/filesystem/product/28/4.1,original version,4/21/2009,28
+7,2.1.2,IOS,3.6,galaxy/filesystem/product/1/2.1.2,bug fixes,4/29/2009,1
+8,4.1,All Platforms,76.79,galaxy/filesystem/product/33/4.1,original version,4/29/2009,33
+9,3.1.0,WindowsPhone,8.6,galaxy/filesystem/product/1/3.1.0,original app,6/11/2009,1
+10,4.1,All Platforms,80.02,galaxy/filesystem/product/38/4.1,original version,6/11/2009,38
+11,3.1.1,WindowsPhone,8.88,galaxy/filesystem/product/1/3.1.1,bug fixes,7/16/2009,1
+12,1.1.2,Android,8.35,galaxy/filesystem/product/2/1.1.2,original app,8/15/2009,2
+13,1.1.3,Android,8.99,galaxy/filesystem/product/2/1.1.3,bug fixes,8/26/2009,2
+14,2.1.4,IOS,9.64,galaxy/filesystem/product/2/2.1.4,original app,9/30/2009,2
+15,2.1.6,IOS,10.28,galaxy/filesystem/product/2/2.1.6,bug fixes,10/9/2009,2
+16,3.1.2,WindowsPhone,10.93,galaxy/filesystem/product/2/3.1.2,original app,10/27/2009,2
+17,3.1.3,WindowsPhone,11.58,galaxy/filesystem/product/2/3.1.3,bug fixes,11/20/2009,2
+18,1.1.4,Android,12.22,galaxy/filesystem/product/3/1.1.4,original app,12/14/2009,3
+19,1.1.5,Android,12.87,galaxy/filesystem/product/3/1.1.5,bug fixes,12/21/2009,3
+20,2.1.8,IOS,13.51,galaxy/filesystem/product/3/2.1.8,original app,12/25/2009,3
+21,2.1.10,IOS,14.16,galaxy/filesystem/product/3/2.1.10,bug fixes,12/27/2009,3
+22,3.1.4,WindowsPhone,14.8,galaxy/filesystem/product/3/3.1.4,original app,1/14/2010,3
+23,3.1.5,WindowsPhone,15.45,galaxy/filesystem/product/3/3.1.5,bug fixes,2/15/2010,3
+24,2.1.62,IOS,64.52,galaxy/filesystem/product/16/2.1.62,bug fixes,2/15/2010,16
+25,1.1.6,Android,16.1,galaxy/filesystem/product/4/1.1.6,original app,3/14/2010,4
+26,4.1,All Platforms,68.4,galaxy/filesystem/product/20/4.1,original version,3/14/2010,20
+27,1.1.7,Android,16.74,galaxy/filesystem/product/4/1.1.7,bug fixes,3/21/2010,4
+28,4.1,All Platforms,70.34,galaxy/filesystem/product/23/4.1,original version,3/21/2010,23
+29,2.1.12,IOS,17.39,galaxy/filesystem/product/4/2.1.12,original app,4/27/2010,4
+30,4.1,All Platforms,74.86,galaxy/filesystem/product/30/4.1,original version,4/27/2010,30
+31,2.1.14,IOS,18.03,galaxy/filesystem/product/4/2.1.14,bug fixes,5/2/2010,4
+32,4.1,All Platforms,77.44,galaxy/filesystem/product/34/4.1,original version,5/2/2010,34
+33,3.1.6,WindowsPhone,18.68,galaxy/filesystem/product/4/3.1.6,original app,7/17/2010,4
+34,3.1.7,WindowsPhone,19.32,galaxy/filesystem/product/4/3.1.7,bug fixes,9/11/2010,4
+35,1.1.8,Android,19.97,galaxy/filesystem/product/5/1.1.8,original app,9/24/2010,5
+36,1.1.9,Android,20.62,galaxy/filesystem/product/5/1.1.9,bug fixes,10/3/2010,5
+37,2.1.16,IOS,21.26,galaxy/filesystem/product/5/2.1.16,original app,10/17/2010,5
+38,2.1.18,IOS,21.91,galaxy/filesystem/product/5/2.1.18,bug fixes,11/1/2010,5
+39,3.1.8,WindowsPhone,22.55,galaxy/filesystem/product/5/3.1.8,original app,11/10/2010,5
+40,3.1.9,WindowsPhone,23.2,galaxy/filesystem/product/5/3.1.9,bug fixes,12/20/2010,5
+41,1.1.10,Android,23.84,galaxy/filesystem/product/6/1.1.10,original app,12/30/2010,6
+42,1.1.11,Android,24.49,galaxy/filesystem/product/6/1.1.11,bug fixes,3/2/2011,6
+43,3.1.31,WindowsPhone,65.82,galaxy/filesystem/product/16/3.1.31,bug fixes,3/2/2011,16
+44,2.1.20,IOS,25.14,galaxy/filesystem/product/6/2.1.20,original app,3/6/2011,6
+45,4.1,All Platforms,66.46,galaxy/filesystem/product/17/4.1,original version,3/6/2011,17
+46,2.1.22,IOS,25.78,galaxy/filesystem/product/6/2.1.22,bug fixes,3/16/2011,6
+47,4.1,All Platforms,69.04,galaxy/filesystem/product/21/4.1,original version,3/16/2011,21
+48,3.1.10,WindowsPhone,26.43,galaxy/filesystem/product/6/3.1.10,original app,4/28/2011,6
+49,4.1,All Platforms,76.15,galaxy/filesystem/product/32/4.1,original version,4/28/2011,32
+50,3.1.11,WindowsPhone,27.07,galaxy/filesystem/product/6/3.1.11,bug fixes,7/12/2011,6
+51,1.1.12,Android,27.72,galaxy/filesystem/product/7/1.1.12,original app,7/15/2011,7
+52,1.1.13,Android,28.36,galaxy/filesystem/product/7/1.1.13,bug fixes,7/19/2011,7
+53,2.1.24,IOS,29.01,galaxy/filesystem/product/7/2.1.24,original app,8/1/2011,7
+54,2.1.26,IOS,29.66,galaxy/filesystem/product/7/2.1.26,bug fixes,8/18/2011,7
+55,3.1.12,WindowsPhone,30.3,galaxy/filesystem/product/7/3.1.12,original app,8/28/2011,7
+56,3.1.13,WindowsPhone,30.95,galaxy/filesystem/product/7/3.1.13,bug fixes,9/15/2011,7
+57,1.1.14,Android,31.59,galaxy/filesystem/product/8/1.1.14,original app,9/24/2011,8
+58,1.1.15,Android,32.24,galaxy/filesystem/product/8/1.1.15,bug fixes,10/14/2011,8
+59,2.1.28,IOS,32.88,galaxy/filesystem/product/8/2.1.28,original app,11/29/2011,8
+60,2.1.30,IOS,33.53,galaxy/filesystem/product/8/2.1.30,bug fixes,12/6/2011,8
+61,3.1.14,WindowsPhone,34.18,galaxy/filesystem/product/8/3.1.14,original app,12/15/2011,8
+62,3.1.15,WindowsPhone,34.82,galaxy/filesystem/product/8/3.1.15,bug fixes,1/1/2012,8
+63,1.1.16,Android,35.47,galaxy/filesystem/product/9/1.1.16,original app,2/19/2012,9
+64,3.1.30,WindowsPhone,65.17,galaxy/filesystem/product/16/3.1.30,original app,2/19/2012,16
+65,1.1.17,Android,36.11,galaxy/filesystem/product/9/1.1.17,bug fixes,4/20/2012,9
+66,4.1,All Platforms,72.92,galaxy/filesystem/product/27/4.1,original version,4/20/2012,27
+67,2.1.32,IOS,36.76,galaxy/filesystem/product/9/2.1.32,original app,5/21/2012,9
+68,4.1,All Platforms,78.73,galaxy/filesystem/product/36/4.1,original version,5/21/2012,36
+69,2.1.34,IOS,37.4,galaxy/filesystem/product/9/2.1.34,bug fixes,5/24/2012,9
+70,4.1,All Platforms,79.38,galaxy/filesystem/product/37/4.1,original version,5/24/2012,37
+71,3.1.16,WindowsPhone,38.05,galaxy/filesystem/product/9/3.1.16,original app,6/16/2012,9
+72,4.1,All Platforms,80.67,galaxy/filesystem/product/39/4.1,original version,6/16/2012,39
+73,3.1.17,WindowsPhone,38.7,galaxy/filesystem/product/9/3.1.17,bug fixes,7/11/2012,9
+74,1.1.18,Android,39.34,galaxy/filesystem/product/10/1.1.18,original app,8/13/2012,10
+75,1.1.19,Android,39.99,galaxy/filesystem/product/10/1.1.19,bug fixes,8/21/2012,10
+76,2.1.36,IOS,40.63,galaxy/filesystem/product/10/2.1.36,original app,9/2/2012,10
+77,2.1.38,IOS,41.28,galaxy/filesystem/product/10/2.1.38,bug fixes,10/17/2012,10
+78,3.1.18,WindowsPhone,41.92,galaxy/filesystem/product/10/3.1.18,original app,10/31/2012,10
+79,3.1.19,WindowsPhone,42.57,galaxy/filesystem/product/10/3.1.19,bug fixes,11/1/2012,10
+80,1.1.20,Android,43.22,galaxy/filesystem/product/11/1.1.20,original app,11/22/2012,11
+81,1.1.21,Android,43.86,galaxy/filesystem/product/11/1.1.21,bug fixes,11/28/2012,11
+82,2.1.40,IOS,44.51,galaxy/filesystem/product/11/2.1.40,original app,1/4/2013,11
+83,2.1.42,IOS,45.15,galaxy/filesystem/product/11/2.1.42,bug fixes,2/4/2013,11
+84,2.1.60,IOS,63.88,galaxy/filesystem/product/16/2.1.60,original app,2/4/2013,16
+85,3.1.20,WindowsPhone,45.8,galaxy/filesystem/product/11/3.1.20,original app,3/22/2013,11
+86,4.1,All Platforms,70.98,galaxy/filesystem/product/24/4.1,original version,3/22/2013,24
+87,3.1.21,WindowsPhone,46.44,galaxy/filesystem/product/11/3.1.21,bug fixes,4/27/2013,11
+88,4.1,All Platforms,75.5,galaxy/filesystem/product/31/4.1,original version,4/27/2013,31
+89,1.1.22,Android,47.09,galaxy/filesystem/product/12/1.1.22,original app,7/20/2013,12
+90,1.1.23,Android,47.74,galaxy/filesystem/product/12/1.1.23,bug fixes,7/28/2013,12
+91,2.1.44,IOS,48.38,galaxy/filesystem/product/12/2.1.44,original app,7/29/2013,12
+92,2.1.46,IOS,49.03,galaxy/filesystem/product/12/2.1.46,bug fixes,8/16/2013,12
+93,3.1.22,WindowsPhone,49.67,galaxy/filesystem/product/12/3.1.22,original app,8/22/2013,12
+94,3.1.23,WindowsPhone,50.32,galaxy/filesystem/product/12/3.1.23,bug fixes,9/10/2013,12
+95,1.1.24,Android,50.96,galaxy/filesystem/product/13/1.1.24,original app,9/22/2013,13
+96,1.1.25,Android,51.61,galaxy/filesystem/product/13/1.1.25,bug fixes,12/3/2013,13
+97,2.1.48,IOS,52.26,galaxy/filesystem/product/13/2.1.48,original app,12/5/2013,13
+98,2.1.50,IOS,52.9,galaxy/filesystem/product/13/2.1.50,bug fixes,12/20/2013,13
+99,3.1.24,WindowsPhone,53.55,galaxy/filesystem/product/13/3.1.24,original app,12/22/2013,13
+100,3.1.25,WindowsPhone,54.19,galaxy/filesystem/product/13/3.1.25,bug fixes,1/25/2014,13
+101,1.1.26,Android,54.84,galaxy/filesystem/product/14/1.1.26,original app,3/8/2014,14
+102,4.1,All Platforms,67.11,galaxy/filesystem/product/18/4.1,original version,3/8/2014,18
+103,4.1,All Platforms,67.75,galaxy/filesystem/product/19/4.1,original version,3/8/2014,19
+104,4.1,All Platforms,69.69,galaxy/filesystem/product/22/4.1,original version,3/20/2014,22
+105,1.1.27,Android,55.48,galaxy/filesystem/product/14/1.1.27,bug fixes,3/26/2014,14
+106,4.1,All Platforms,72.27,galaxy/filesystem/product/26/4.1,original version,3/26/2014,26
+107,2.1.52,IOS,56.13,galaxy/filesystem/product/14/2.1.52,original app,4/22/2014,14
+108,4.1,All Platforms,74.21,galaxy/filesystem/product/29/4.1,original version,4/22/2014,29
+109,2.1.54,IOS,56.78,galaxy/filesystem/product/14/2.1.54,bug fixes,5/14/2014,14
+110,4.1,All Platforms,78.08,galaxy/filesystem/product/35/4.1,original version,5/14/2014,35
+111,3.1.26,WindowsPhone,57.42,galaxy/filesystem/product/14/3.1.26,original app,6/26/2014,14
+112,4.1,All Platforms,81.31,galaxy/filesystem/product/40/4.1,original version,6/26/2014,40
+113,3.1.27,WindowsPhone,58.07,galaxy/filesystem/product/14/3.1.27,bug fixes,7/1/2014,14
+114,1.1.28,Android,58.71,galaxy/filesystem/product/15/1.1.28,original app,9/7/2014,15
+115,1.1.29,Android,59.36,galaxy/filesystem/product/15/1.1.29,bug fixes,10/16/2014,15
+116,2.1.56,IOS,60,galaxy/filesystem/product/15/2.1.56,original app,10/26/2014,15
+117,2.1.58,IOS,60.65,galaxy/filesystem/product/15/2.1.58,bug fixes,11/21/2014,15
+118,3.1.28,WindowsPhone,61.3,galaxy/filesystem/product/15/3.1.28,original app,11/28/2014,15
+119,3.1.29,WindowsPhone,61.94,galaxy/filesystem/product/15/3.1.29,bug fixes,12/5/2014,15
+120,1.1.30,Android,62.59,galaxy/filesystem/product/16/1.1.30,original app,12/11/2014,16
