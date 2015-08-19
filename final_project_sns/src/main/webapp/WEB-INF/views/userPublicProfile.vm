@@ -1,0 +1,71 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css"
+	rel="stylesheet">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+	background-image: url('./resources/images/background/1234.jpg');
+	background-repeat: repeat;
+	background-position: fixed;
+	background-size: cover;
+}
+</style>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="container-fluid">
+			<div class="ep3">
+				<h1>Public Profile Page</h1>
+				<div class="row-fluid">
+					
+					<div class="span8">
+						<h3>
+							<b>Name:</b> ${userProfile.fname} ${userProfile.lname}
+						</h3>
+						<h6>
+							<b>Email:</b> ${userProfile.email}
+						</h6>
+						<h6>
+							<b>Date of Birth:</b> ${userProfile.day}-${userProfile.month}-${userProfile.year}
+						</h6>
+						<h6>
+							<b>Gender:</b> ${userProfile.gender}
+						</h6>
+						<h6>
+							<b>Mobile:</b> ${userProfile.mobile}
+						</h6>
+						<h6>
+							<b>City:</b> ${userProfile.city}
+						</h6>
+						<h6>
+							<b>State:</b> ${userProfile.state}
+						</h6>
+						<h6>
+							<b>Country:</b> ${userProfile.country}
+						</h6>
+						<h6>
+							<b>Smoking:</b> ${userProfile.smoking}
+						</h6>
+						<h6>
+							<b>Drinking:</b> ${userProfile.drinking}
+						</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Admin Page</title>
+</head>
+<body>
+	<h1>All User Profile using Velocity</h1>
+	<table border="2px">
+		<b></b><tr>
+			<td>USERNAME</td>
+			<td>FIRSTNAME</td>
+			<td>LASTNAME</td>
+			<td>GENDER</td>
+			<td>MOBILE</td>
+			<td>E-MAIL</td>
+			<td>CITY</td>
+			<td>STATE</td>
+			<td>COUNTRY</td>
+			<td>DATE OF BIRTH</td>
+			<td>SMOKING</td>
+			<td>DRINKING</td>
+			<td>DELETE?</td>
+		</tr></b>
+#foreach($list in ${userProfileList})
+<tr>
+			<td>${list.username}</td>
+			<td>${list.fname}</td>
+			<td>${list.lname}</td>
+			<td>${list.gender}</td>
+			<td>${list.mobile}</td>
+			<td>${list.email}</td>
+			<td>${list.city}</td>
+			<td>${list.state}</td>
+			<td>${list.country}</td>
+			<td>${list.day}-${list.month}-${list.year}</td>
+			<td>${list.smoking}</td>
+			<td>${list.drinking}</td>
+			<td><a href="deleteProfile?username=${list.username}">Delete</a></td>
+</tr>
+#end
+	</table>
+
+</body>
+</html>
