@@ -16,22 +16,6 @@ public class LoginDao extends DAO {
 	
 	private SessionFactory sessionFactory;
 
-/*	@SuppressWarnings("unchecked")
-	public User findByUserName(String username) {
-
-		List<User> users = new ArrayList<User>();
-
-		users = getSessionFactory().getCurrentSession().createQuery("from User where username=?")
-				.setParameter(0, username).list();
-
-		if (users.size() > 0) {
-			return users.get(0);
-		} else {
-			return null;
-		}
-
-	}*/
-
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
@@ -44,17 +28,14 @@ public class LoginDao extends DAO {
 	public User queryUserByNameAndPassword(String username, String password)
             throws Exception {
         try {
-      //      begin();
         	Session session = getSession();
             Query q = session.createQuery("from User where username = :username and password = :password");
             q.setString("username", username);
             q.setString("password", password);
             User user = (User) q.uniqueResult();
-     //       commit();
             session.close();
             return user;
         } catch (HibernateException e) {
-     //       rollback();
             throw new Exception("Could not get user " + username, e);
         }
 	

@@ -12,6 +12,7 @@ import com.me.sns.model.UserProfile;
 
 public class AdminDao extends DAO {
 
+	//Retrieve list if user profile from the database
 	public List<UserProfile> getAllUserProfile(){
 		
 		Session session = getSession().getSessionFactory().openSession();
@@ -21,6 +22,7 @@ public class AdminDao extends DAO {
 		return up;
 	}
 	
+	//Delete the profile from the database
 	public void deleteProfile(String username) {
 		Session session = getSession().getSessionFactory().openSession();
 		session.beginTransaction();

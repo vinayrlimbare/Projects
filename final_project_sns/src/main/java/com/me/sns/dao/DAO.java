@@ -5,7 +5,7 @@ import java.util.logging.Level;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-
+//Create DAO for few transactions 
 public abstract class DAO {
      
    public Session getSession(){
@@ -16,15 +16,17 @@ public abstract class DAO {
    protected DAO() {
    }
 
-
+   //Begins a transaction
    protected void begin() {
        getSession().beginTransaction();
    }
 
+   //Writes/Saves the changes
    protected void commit() {
        getSession().getTransaction().commit();
    }
 
+   //Rollbacks any changes made
    protected void rollback() {
        try {
            getSession().getTransaction().rollback();
@@ -39,6 +41,7 @@ public abstract class DAO {
       
    }
 
+   //Close the session 
    public  void close() {
        getSession().close();
    }

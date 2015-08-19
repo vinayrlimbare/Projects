@@ -13,6 +13,7 @@ import com.me.sns.model.GroupMessages;
 
 public class GroupDao extends DAO {
 
+	//Retrieve the list of groups from database using a keyword
 	public List<Group> getAllGroup(String gname){
 		
 		Session session = getSession().getSessionFactory().openSession();
@@ -33,6 +34,7 @@ public class GroupDao extends DAO {
 		return  gList;
 	}
 	
+	//Adding  a user to the list of members in a group in the database
 	public boolean joinGroup(int gid,String username) {
 		
 		boolean res=false;
@@ -67,12 +69,13 @@ public class GroupDao extends DAO {
 		return res;
 	}
 	
+	//Retrieves from the database the list of groups a user has registered for
 	public List<GroupMembers> getGroupForUser(String username) {
 		
 		Session session = getSession().getSessionFactory().openSession();
 		session.beginTransaction();
 		
-		Query q = session.createQuery("from GroupMembers where username = :username"); // where gid in (select distinct gid from groupmembers where username = :username)");
+		Query q = session.createQuery("from GroupMembers where username = :username"); 
 		q.setString("username", username);
 		List<GroupMembers> gList = q.list();
 		
@@ -81,6 +84,7 @@ public class GroupDao extends DAO {
 		
 	}
 	
+	//Retrieves from the database the messages of a particular group
 	public List<GroupMessages> getGroupMessages(int gid) {
 		
 		Session session = getSession().getSessionFactory().openSession();
@@ -94,6 +98,7 @@ public class GroupDao extends DAO {
 		
 	}
 	
+	//Message sent to a group is saved in the database
 	public void sendGroupMessage(GroupMessages groupMessages) {
 		
 		Session session = getSession().getSessionFactory().openSession();
@@ -105,6 +110,7 @@ public class GroupDao extends DAO {
 		session.close();
 	}
 	
+	//Creating a group in the database
 	public void createGroup(Group group) {
 		Session session = getSession().getSessionFactory().openSession();
 		session.beginTransaction();

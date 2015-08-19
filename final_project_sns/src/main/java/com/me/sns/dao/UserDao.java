@@ -28,7 +28,43 @@ import com.me.sns.model.User;
 import com.me.sns.model.UserProfile;
 
 public class UserDao extends DAO {
+	
+	//Function to send mail to the user account using mail.session  
+	public int sendVerification(UserProfile user) {
+		final String gmailu = "northeastern.dating@gmail.com";
+		final String gmailp = "@Vinay1234";
+		//User user = moneyTransaction.getUser();
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+		javax.mail.Session session = javax.mail.Session.getDefaultInstance(
+				props, new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(gmailu, gmailp);
+					}
+				});
+		try {
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("northeastern.dating@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse(user.getEmail()));
+			message.setSubject("Account Verification - Northeastern Dating Site");
+			message.setText("Hi " + user.getFname() + " "
+					+ user.getLname() + ", Click on the link to verify your account: http://localhost:8080/sns/verify?username="
+					+ user.getUsername() + "&code="
+					+ user.getCode());
+			Transport.send(message);
+			return 1;
+		} catch (MessagingException e) {
+			// throw new RuntimeException(e);
+			//JOptionPane.showMessageDialog(null, "cant process the request");
+			return -1;
+		}
+	}
 
+	//Retrieve from database the userprofile 
 	public UserProfile getUserProfile(String username) {
 		Query q = getSession().createQuery(
 				"from UserProfile where username = :username");
@@ -37,6 +73,7 @@ public class UserDao extends DAO {
 		return userProfile;
 	}
 
+	//Retrieve from database the friend list of a user
 	public List<UserProfile> getFriendNames(String username) {
 
 		List<String> frndNames;
@@ -56,11 +93,14 @@ public class UserDao extends DAO {
 		return userProfile;
 	}
 
+	//Delete a friend in the database
 	public void deleteFriend(String username, String fname) {
 
 		Session session = getSession();
 		session.beginTransaction();
 
+		//Alternate code
+		
 		/*
 		 * Query q = session.createSQLQuery(
 		 * "select * from friendlist  where friendname = :username and username = :fname and status ='act' union select * from friendlist  where username = :username and  friendname = :fname and status = 'act'"
@@ -86,6 +126,7 @@ public class UserDao extends DAO {
 		session.close();
 	}
 
+	//Retrieve from database the usernames
 	public List<UserProfile> getUserProfiles(String username) {
 		Query q = getSession().createQuery(
 				"from UserProfile where username like :username");
@@ -95,6 +136,7 @@ public class UserDao extends DAO {
 		return userProfile;
 	}
 
+	//Submits registration information in the database
 	public void submitUserRegistration(UserProfile userProfile, String password) {
 
 		Session session = getSession();
@@ -137,6 +179,7 @@ public class UserDao extends DAO {
 		return;
 	}
 
+	//Edit profile in the database
 	public void editProfile(String username, UserProfile up) {
 
 		Session session = getSession();
@@ -147,11 +190,6 @@ public class UserDao extends DAO {
 		q.setString("username", username);
 		UserProfile userProfile = (UserProfile) q.uniqueResult();
 		session.close();
-		// Session session = getSession();
-		// session.beginTransaction();
-		//
-		// UserProfile userProfile = (UserProfile)session.get(UserProfile.class,
-		// up.getUsername());
 
 		userProfile = up;
 		Session session2 = getSession();
@@ -161,6 +199,7 @@ public class UserDao extends DAO {
 		session2.close();
 	}
 
+	//Retrieve from database the pending lists of friends
 	public List<UserProfile> getPendingFriendList(String username) {
 
 		Query q = getSession()
@@ -172,6 +211,7 @@ public class UserDao extends DAO {
 		return fList;
 	}
 
+	//Retrieve from database the messages 
 	public List<Messages> showMessagesByUserName(String name) throws Exception {
 		try {
 			Query q = getSession().createQuery(
@@ -186,6 +226,7 @@ public class UserDao extends DAO {
 		}
 	}
 
+	//Retrieve from database the messages by id
 	public List<Messages> showMessagesByMessageId(int mid) throws Exception {
 		try {
 			Query q = getSession().createQuery(
@@ -200,6 +241,7 @@ public class UserDao extends DAO {
 		}
 	}
 
+	//Delete message from the database
 	public int deleteMessage(int messageId) throws Exception {
 		try {
 			int update = 0;
@@ -217,6 +259,7 @@ public class UserDao extends DAO {
 		}
 	}
 
+	//Reply message to the user which is saved in the database
 	public int replyToMessage(String sender, String receiver, String message)
 			throws Exception {
 		try {
@@ -244,6 +287,7 @@ public class UserDao extends DAO {
 		}
 	}
 
+	//Add friend to the friend list in database
 	public int addFriend(String username, String friendname) {
 		FriendList fl;
 
@@ -310,6 +354,7 @@ public class UserDao extends DAO {
 
 	}
 
+	//Retrieve the list of genders
 	public List<String> getGenderList() {
 
 		List<String> gender = new ArrayList<String>();
@@ -318,6 +363,7 @@ public class UserDao extends DAO {
 		return gender;
 	}
 
+	//Returns the list of states in US
 	public List<String> getStateList() {
 		List<String> state = new ArrayList<String>();
 		state.add("---");
@@ -375,6 +421,7 @@ public class UserDao extends DAO {
 		return state;
 	}
 
+	//Return the list of months 
 	public List<String> getMonthList() {
 		List<String> month = new ArrayList<String>();
 		month.add("January");
@@ -392,6 +439,7 @@ public class UserDao extends DAO {
 		return month;
 	}
 
+	//Algorithm to find a match
 	public List<UserProfile> findMatch(UserProfile up, int age1, int age2) {
 		List<UserProfile> userProfile;
 
@@ -454,6 +502,7 @@ public class UserDao extends DAO {
 		return userProfile;
 	}
 
+	//Set the profile pic and save the name in the database
 	public void setProfilePic(String username, String imageName) {
 
 		Session session = getSession().getSessionFactory().openSession();
@@ -470,39 +519,7 @@ public class UserDao extends DAO {
 
 	}
 	
-	public int sendVerification(UserProfile user) {
-		final String gmailu = "northeastern.dating@gmail.com";
-		final String gmailp = "@Vinay1234";
-		//User user = moneyTransaction.getUser();
-		Properties props = new Properties();
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "587");
-		javax.mail.Session session = javax.mail.Session.getDefaultInstance(
-				props, new javax.mail.Authenticator() {
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(gmailu, gmailp);
-					}
-				});
-		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("northeastern.dating@gmail.com"));
-			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(user.getEmail()));
-			message.setSubject("Account Verification - Northeastern Dating Site");
-			message.setText("Hi " + user.getFname() + " "
-					+ user.getLname() + ", Click on the link to verify your account: http://localhost:8080/sns/verify?username="
-					+ user.getUsername() + "&code="
-					+ user.getCode());
-			Transport.send(message);
-			return 1;
-		} catch (MessagingException e) {
-			// throw new RuntimeException(e);
-			//JOptionPane.showMessageDialog(null, "cant process the request");
-			return -1;
-		}
-	}
+	
 	
 	public int verify(String username, String code) {
 		

@@ -51,11 +51,13 @@ public class HomeController {
 			.getLogger(HomeController.class);
 
 	HttpSession session;
-
+	
+	//Using Autowired Annotations
 	@Autowired
 	@Qualifier("userValidator")
 	private Validator validator;
 
+	//Binding the Validator
 	@InitBinder("user")
 	private void initBinder(WebDataBinder binder) {
 		binder.setValidator(validator);
@@ -79,6 +81,8 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String initUserLoginForm(Model model, HttpServletRequest request) {
 		User user = new User();
+		
+		//Use cookies to retrieve last login information
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null && cookies.length >= 2) {
 			try {
@@ -91,6 +95,8 @@ public class HomeController {
 						model.addAttribute("user", u);
 						return "mainPage";
 					}
+					
+					//Checks if the user has not verified his email.
 					if (u != null && u.getStatus().equals("N")) {
 						return "unverified";
 					}
@@ -103,6 +109,7 @@ public class HomeController {
 		return "home1";
 	}
 
+	//Check if the user has clicked the check box to save his login information 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String home(Model model, @Validated User user, BindingResult result,
 			HttpServletResponse response, HttpServletRequest request) {
@@ -116,16 +123,18 @@ public class HomeController {
 			try {
 				User u = loginDao.queryUserByNameAndPassword(
 						user.getUsername(), user.getPassword());
-				//JOptionPane.showMessageDialog(null, u.getStatus());
 				if (u != null && u.getStatus().equals("Y")) {
 					session = request.getSession();
 					session.setAttribute("user", u);
 
+					//Check is the user is an admin
 					if (u.getRole().equals("ADMIN")) {
 						model.addAttribute("user", u);
 						return "admin";
 					}
 
+					
+					//Create cookie if the user wants to remember his session for a week
 					if (remember != null
 							&& remember.equalsIgnoreCase("Remember")) {
 						Cookie userName = new Cookie("userName",
@@ -141,6 +150,8 @@ public class HomeController {
 					model.addAttribute("user", u);
 					return "mainPage";
 				}
+				
+				//Checks if the user has not verified his email.
 				if (u != null && u.getStatus().equals("N")) {
 					return "unverified";
 				}
@@ -153,18 +164,21 @@ public class HomeController {
 		return "error";
 	}
 
+	//Frame the consists of pages only for admin related work
 	@RequestMapping(value = "mainAdminFrame")
 	public String mainAdminFrame(Model model, User user) {
 		model.addAttribute("user", user);
 		return "mainAdminFrame";
 	}
 
+	//Main page in a frame for admin
 	@RequestMapping(value = "mainAdminPage")
 	public String mainAdminPage(Model model, User user) {
 		model.addAttribute("user", user);
 		return "mainAdminPage";
 	}
 
+	//To view the admin profile
 	@RequestMapping(value = "adminViewProfile")
 	public String adminViewProfile(Model model) {
 		List<UserProfile> up = adminDao.getAllUserProfile();
@@ -172,6 +186,7 @@ public class HomeController {
 		return "adminViewProfile";
 	}
 
+	//To delete a profile of a user usually done by an admin
 	@RequestMapping(value = "deleteProfile")
 	public String mainAdminPage(Model model,
 			@RequestParam("username") String username) {
@@ -179,9 +194,9 @@ public class HomeController {
 		return "mainAdminPage";
 	}
 
+	//User's Frame that also loads all the groups of user in the Sidebar
 	@RequestMapping(value = "mainPageFrame")
 	public String mainPageFrame(Model model) {
-		// model.addAttribute("user", user);
 		User user = (User) session.getAttribute("user");
 		List<GroupMembers> gList = groupDao.getGroupForUser(user.getUsername());
 		model.addAttribute("gList", gList);
@@ -198,24 +213,25 @@ public class HomeController {
 		return accessDenied(model);
 	}
 
+	//Mapping to return access denied page if anything unusual has encountered
 	@RequestMapping(value = "accessDenied")
 	public String accessDenied(Model model) {
 		return "accessDenied";
 	}
 
+	//Mapping to render the header of user's page
 	@RequestMapping(value = "mainPageHeader")
 	public String mainPageHeader(Model model) {
-		// model.addAttribute("user", user);
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("fname", user.getUserProfile().getFname());
 		model.addAttribute("lname", user.getUserProfile().getLname());
 		return "mainPageHeader";
 	}
 
+	//Retrieves the list of states in US and also the genders 
 	@RequestMapping(value = "test")
 	public String test(Model model, User user, UserProfile userProfile) {
 		model.addAttribute("user", user);
-		/* model.addAttribute("") */
 		List<String> genderList = userDao.getGenderList();
 		model.addAttribute("genderList", genderList);
 
@@ -224,6 +240,7 @@ public class HomeController {
 		return "test";
 	}
 
+	//Mapping to retrieve the User's profile
 	@RequestMapping(value = "userProfile")
 	public String userProfile(Model model, User user) {
 		User u = (User) session.getAttribute("user");
@@ -233,6 +250,7 @@ public class HomeController {
 		return "userProfile";
 	}
 
+	//Mapping to edit user's profile
 	@RequestMapping(value = "editProfile")
 	public String editProfile(Model model, User user) {
 		User u = (User) session.getAttribute("user");
@@ -242,16 +260,16 @@ public class HomeController {
 		return "editProfile";
 	}
 
+	//To check the user's public profile
 	@RequestMapping(value = "userPublicProfile", method = RequestMethod.GET)
 	public String userPublicProfile(Model model, User user,
 			@RequestParam("username") String username) {
-		// User u = (User)session.getAttribute("user");
 		UserProfile up = userDao.getUserProfile(username);
-		// model.addAttribute("user", u);
 		model.addAttribute("userProfile", up);
 		return "userPublicProfile";
 	}
 
+	//Registration process for new user 
 	@RequestMapping(value = "register")
 	public String register(Model model) {
 		UserProfile userProfile = new UserProfile();
@@ -268,18 +286,19 @@ public class HomeController {
 		return "register";
 	}
 
+	//Submitting registration and checks if the user is already registered or not
 	@RequestMapping(value = "submitRegistration", method = RequestMethod.POST)
 	public String submitRegistration(Model model, UserProfile userProfile,
 			@RequestParam("password") String password) {
 		userDao.submitUserRegistration(userProfile, password);
 		int res = userDao.sendVerification(userProfile);
-		// model.addAttribute("userProfile", userProfile);
 		if(res==-1) {
 			return accessDenied(model);
 		}
 		return "submitRegistration";
 	}
 	
+	//Verify the user by the link he/she would get on their e-mail
 	@RequestMapping(value="verify")
 	public String verify(Model model, @RequestParam("username")String username, @RequestParam("code")String code) {
 		
@@ -293,21 +312,25 @@ public class HomeController {
 		}
 	}
 
+	//Verified page
 	@RequestMapping(value="verified")
 	public String verified(Model model) {
 		return "verified";
 	}
 	
+	//Error to show that the user has not verified his account
 	@RequestMapping(value="unverified")
 	public String unverified(Model model) {
 		return "unverified";
 	}
 	
+	//General error page
 	@RequestMapping(value="error")
 	public String error(Model model) {
 		return "error";
 	}
 	
+	//To edit a user's profile
 	@RequestMapping(value = "editProfile", method = RequestMethod.POST)
 	public String editProfile(Model model, UserProfile userProfile,
 			@RequestParam("username") String username) {
@@ -319,6 +342,7 @@ public class HomeController {
 		return "userProfile";
 	}
 
+	//Mapping to retrieve user's friends and pending friend confirmation
 	@RequestMapping(value = "friendList")
 	public String friendList(Model model) {
 		User user = (User) session.getAttribute("user");
@@ -330,6 +354,7 @@ public class HomeController {
 		return "friendList";
 	}
 
+	//Confirm a friend's request 
 	@RequestMapping(value = "confirmRequest")
 	public String confirmRequest(Model model,
 			@RequestParam("uname") String uname) {
@@ -338,6 +363,7 @@ public class HomeController {
 		return friendList(model);
 	}
 
+	//Reject a user's friend request
 	@RequestMapping(value = "rejectRequest")
 	public String rejectRequest(Model model, @RequestParam("uname") String uname) {
 		User user = (User) session.getAttribute("user");
@@ -345,6 +371,7 @@ public class HomeController {
 		return friendList(model);
 	}
 
+	//Delete a friend from friend list
 	@RequestMapping(value = "deleteFriend")
 	public String deleteFriend(Model model, @RequestParam("fName") String fname) {
 		User user = (User) session.getAttribute("user");
@@ -352,6 +379,7 @@ public class HomeController {
 		return friendList(model);
 	}
 
+	//Mapping to show messages that a user receives 
 	@RequestMapping(value = "showMessages")
 	public String showMessage(Model model) {
 		User user = (User) session.getAttribute("user");
@@ -373,14 +401,13 @@ public class HomeController {
 
 	}
 
+	//Mapping to open search page
 	@RequestMapping(value = "search")
 	public String search(Model model) {
-		// String username = "a";
-		// List<UserProfile> userProfile = userDao.getUserProfiles("");
-		// model.addAttribute("sList", userProfile);
 		return "search";
 	}
 
+	//To search a particular user by name
 	@RequestMapping(value = "search", method = RequestMethod.POST)
 	public String search111(Model model, @RequestParam("name") String username) {
 		// String username = "a";
@@ -389,6 +416,7 @@ public class HomeController {
 		return "search";
 	}
 
+	//Delete a user's message and update the list
 	@RequestMapping(value = "deleteMessage", method = RequestMethod.GET)
 	public String deleteMessage(Model model, @RequestParam("mid") int mid) {
 		User user = (User) session.getAttribute("user");
@@ -411,6 +439,7 @@ public class HomeController {
 		return "error";
 	}
 
+	//Reply to a user's message 
 	@RequestMapping(value = "replyMessage")
 	public String replyMessage(Model model,
 			@RequestParam("toUser") String toUser, @RequestParam("mid") int mid) {
@@ -435,14 +464,11 @@ public class HomeController {
 		return "error";
 	}
 
+	//Send a new message to a user
 	@RequestMapping(value = "sendNewMessage")
 	public String sendNewMessage(Model model,
 			@RequestParam("username") String username,
 			@RequestParam("msg") String msg) {
-		/*
-		 * JOptionPane.showMessageDialog(null, msg);
-		 * JOptionPane.showMessageDialog(null, username);
-		 */
 		User user = (User) session.getAttribute("user");
 		try {
 			int res = userDao.replyToMessage(user.getUsername(), username, msg);
@@ -453,6 +479,7 @@ public class HomeController {
 		return friendList(model);
 	}
 
+	//Submitting a reply to the user's message
 	@RequestMapping(value = "replyToMessage", method = RequestMethod.POST)
 	public String replyToMessage(Model model, Messages messages,
 			@RequestParam("request") String request) {
@@ -475,28 +502,38 @@ public class HomeController {
 
 	}
 
+	//Add a friend to friend list after finding using the search page
 	@RequestMapping(value = "addFriend", method = RequestMethod.GET)
 	public String addFriend(Model model,
 			@RequestParam("friendname") String friendname) {
 		User user = (User) session.getAttribute("user");
 		int res = 0;
+		
+		//You cannot add yourself as a friend
 		if (user.getUsername().equals(friendname)) {
 			model.addAttribute("msg","You cannot add yourself");
 			return "error";
 		}
+		
+		//Confirmation on addding a friend
 		res = userDao.addFriend(user.getUsername(), friendname);
 		if (res == 0) {
 			model.addAttribute("msg","Added!!!");
 		}
+		
+		//Check to see if the user is already added to the list
 		if (res == 1) {
 			model.addAttribute("msg", "Already Friend");
 		}
+		
+		//Message to user saying the friend has already been added but has not accepted the request yet
 		if (res == 2) {
 			model.addAttribute("msg", "Request Pending");
 		}
 		return "search";
 	}
 
+	//Page to change password
 	@RequestMapping(value = "changePassword")
 	public String changePassword(Model model) {
 		User user = (User) session.getAttribute("user");
@@ -504,18 +541,18 @@ public class HomeController {
 		return "changePassword";
 	}
 
+	//Page to submit the change of password
 	@RequestMapping(value = "submitPasswordChange")
 	public String submitPasswordChange(Model model, @RequestParam("newPassword") String newPassword) {
-		//JOptionPane.showMessageDialog(null, "Password Chnged!!!");
 		User user = (User) session.getAttribute("user");
 		User u =userDao.changePassword(user, newPassword);
 		session.setAttribute("user", u);
 		return changePassword(model);
 	}
 
+	//Logout function which also clears the cookie information
 	@RequestMapping(value = "logout")
 	public String logout(Model model, HttpServletResponse response) {
-		// model.addAttribute("response", response);
 
 		Cookie userName = new Cookie("userName", "");
 		userName.setMaxAge(0);
@@ -525,26 +562,25 @@ public class HomeController {
 		userName.setMaxAge(0);
 		response.addCookie(userPassword);
 
-		// session.invalidate();
 		session.removeAttribute("user");
-		// session.setAttribute("user",null);
 
 		model.addAttribute(response);
 		return "logout";
 	}
 
+	//Check availability of a username
 	@RequestMapping(value = "checkAvailability")
 	public @ResponseBody String checkAvailability(
 			@RequestParam("username") String username) {
 		String res = "1";
 		UserProfile up = userDao.getUserProfile(username);
-		/* JOptionPane.showMessageDialog(null,username); */
 		if (up == null) {
 			res = "0";
 		}
 		return res;
 	}
 
+	//User search based on age range Eg: 18 - 25
 	@RequestMapping(value = "findMatch", method = RequestMethod.POST)
 	public String findMatch(Model model, UserProfile userProfile,
 			@RequestParam("age1") int age1, @RequestParam("age2") int age2) {
@@ -554,6 +590,7 @@ public class HomeController {
 		return "search";
 	}
 
+	//Load the profile picture
 	@RequestMapping(value = "pic")
 	public String pic(Model model, ProfilePicture ppPic) {
 		ProfilePicture pPic = new ProfilePicture();
@@ -561,16 +598,20 @@ public class HomeController {
 		return "pic";
 	}
 
+	//Mapping to upload the profile picture or change the existing one 
 	@RequestMapping(value = "pic2")
 	public String pic2(Model model, ProfilePicture pPic) {
 
 		User user = (User) session.getAttribute("user");
 		CommonsMultipartFile file = pPic.getProfilePic();
 
+		//Cannot upload empty file
 		if (file.isEmpty()) {
 			model.addAttribute("msg","File cannot be empty!!!");
 			return "error";
 		}
+		
+		//Location of the profile picture
 		File localFile = new File(
 				"C:\\Users\\Vinay Limbare\\Documents\\workspace-sts-3.6.4.RELEASE\\final_project_sns\\src\\main\\webapp\\resources\\images\\profilepic\\",
 				user.getUsername() + ".jpg");
@@ -592,29 +633,22 @@ public class HomeController {
 		return "pic";
 	}
 
-	/*
-	 * @RequestMapping(value="searchGroup") public String searchAllGroup(Model
-	 * model) { User user = (User) session.getAttribute("user"); List<Group>
-	 * groupList = groupDao.getAllGroup(0);
-	 * model.addAttribute("gList",groupList); return "searchGroup"; }
-	 */
-
+	//Page to open group search  
 	@RequestMapping(value = "searchGroup")
 	public String searchGp(Model model) {
 		return "searchGroup";
 	}
 
+	//Search for groups or community based on the search term given
 	@RequestMapping(value = "searchGroup", method = RequestMethod.POST)
 	public String searchGroup(Model model, @RequestParam("gname") String gname) {
-		// User user = (User) session.getAttribute("user");
+		
 		List<Group> groupList = groupDao.getAllGroup(gname);
-		/*for (Group group : groupList) {
-			JOptionPane.showMessageDialog(null, group.getgName());
-		}*/
 		model.addAttribute("gList", groupList);
 		return "searchGroup";
 	}
 
+	//Join the group which has not been joined earlier
 	@RequestMapping(value = "joinGroup")
 	public String joinGroup(Model model, @RequestParam("gid") int gid) {
 		User user = (User) session.getAttribute("user");
@@ -630,6 +664,7 @@ public class HomeController {
 		return searchGp(model);
 	}
 
+	//Show the list of messages sent in that group
 	@RequestMapping(value = "showGroupMessages")
 	public String showGroupMessages(Model model, @RequestParam("gid") int gid) {
 		User user = (User) session.getAttribute("user");
@@ -642,6 +677,7 @@ public class HomeController {
 		return "showGroupMessages";
 	}
 
+	//Send a message to the group
 	@RequestMapping(value = "sendGroupMessage")
 	public String sendGroupMessage(Model model, GroupMessages groupMessages) {
 		groupDao.sendGroupMessage(groupMessages);
@@ -649,6 +685,7 @@ public class HomeController {
 		return showGroupMessages(model, gid);
 	}
 
+	//Create a new group
 	@RequestMapping(value = "createGroup")
 	public String createGroup(Model model) {
 		Group group = new Group();
@@ -656,10 +693,9 @@ public class HomeController {
 		return "createGroup";
 	}
 
+	//Submit the form to create a new group
 	@RequestMapping(value = "createGroup", method = RequestMethod.POST)
 	public String submitNewGroup(Model model, Group group) {
-		// model.addAttribute("group",group);
-		// JOptionPane.showMessageDialog(null, group.getgName());
 		groupDao.createGroup(group);
 		model.addAttribute("msg", "Group has been created");
 		return "createGroup";
